@@ -21,23 +21,6 @@ public:
             }
             else
             {
-                /*int newi=0;
-                if(n/10!=0)
-                {
-                    while(n!=0)
-                    {
-                        newi=newi+(n%10);
-                        n=n/10;
-                    }
-                    while(newi!=0)
-                    {
-                        n=newi%10;
-                        c=48+n;
-                        ch.push_back(c);
-                    }
-                }
-                ch=48+i;
-                //cout<<c;*/
                 stringstream ss;
                 ss<<i;
                 ss>>ch;
