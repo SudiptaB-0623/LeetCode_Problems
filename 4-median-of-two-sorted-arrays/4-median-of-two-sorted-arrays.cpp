@@ -11,10 +11,10 @@ public:
             return 0;
         if(nums1.size()==0 && nums2.size()!=0)
         {
-            cout<<"**"<<1;
+            //cout<<"**"<<1;
             if(nums2.size()%2==0)
             {
-                cout<<"**"<<17;
+                //cout<<"**"<<17;
                 a=nums2.size()/2;
                 b=a-1;
                 ans=(nums2[b]+nums2[a])/2.00;
@@ -22,7 +22,7 @@ public:
             }
             else
             {
-                cout<<"**"<<18;
+                //cout<<"**"<<18;
                 b=nums2.size()/2;
                 ans=nums2[b];
                 return ans;
@@ -33,7 +33,7 @@ public:
         {
             if(nums1.size()%2==0)
             {
-                cout<<"**"<<2;
+                //cout<<"**"<<2;
                 a=nums1.size()/2;
                 b=a-1;
                 ans=(nums1[a]+nums1[b])/2.00;
@@ -41,7 +41,7 @@ public:
             }
             else
             {
-                cout<<"**"<<3;
+                //cout<<"**"<<3;
                 a=nums1.size()/2;
                 ans=nums1[a];
                 return ans;
@@ -53,7 +53,7 @@ public:
         {
             if(a>=nums1.size())
             {
-                cout<<"**"<<4;
+                //cout<<"**"<<4;
                 c=b;
                 val2=val1;
                 val1=nums2[b];
@@ -61,7 +61,7 @@ public:
             }
             else if(b>=nums2.size())
             {
-                cout<<"**"<<5;
+                //cout<<"**"<<5;
                 c=a;
                 val2=val1;
                 val1=nums1[a];
@@ -69,7 +69,7 @@ public:
             }
             else if(nums1[a]<nums2[b])
             {
-                cout<<"**"<<6;
+                //cout<<"**"<<6;
                 c=a;
                 val2=val1;
                 val1=nums1[a];
@@ -78,7 +78,7 @@ public:
             }
             else if(nums1[a]>=nums2[b])
             {
-                cout<<"**"<<7;
+                //cout<<"**"<<7;
                 c=b;
                 val2=val1;
                 val1=nums2[b];
