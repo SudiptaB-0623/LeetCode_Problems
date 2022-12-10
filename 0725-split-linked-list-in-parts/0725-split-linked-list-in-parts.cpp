@@ -27,7 +27,7 @@ public:
         temp = head;
         int part = size/k;
         int k2 =k;
-        cout<<part<<endl;  
+          
         while(temp!=NULL)
         {
             int count;
@@ -40,10 +40,9 @@ public:
             {
                 count = part;
             }
-            cout<<count<<"##   ";
-            size = size - count;
-            cout<<size<<"## ";
             
+            size = size - count;
+                        
             ListNode *front = new ListNode();
             front->val = temp->val;
             front->next=NULL;
@@ -52,8 +51,7 @@ public:
             count--;
             
             while(count!=0)
-            {
-                cout<<temp->val<<" ";
+            {                
                 ListNode *fresh = new ListNode();
                 fresh->val = temp->val;
                 fresh->next=NULL;
@@ -65,8 +63,7 @@ public:
                 count--;
             }
             
-            ans.push_back(front);
-            cout<<endl;
+            ans.push_back(front);            
             k--;
         }
         
