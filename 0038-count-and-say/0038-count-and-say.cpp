@@ -3,19 +3,22 @@ class Solution
 public:
     string countAndSay(int n) 
     {
-        string ans="1", prev="";
-        for(int i=1; i<n; ++i)
+        string ans = "1";
+        for(int i=1;i<n;i++)
         {
-            for(int j=0; j<ans.size(); ++j)
+            string temp = "";
+            int count = 1;
+            for(int j=0;j<ans.size()-1;j++)
             {
-                int c=1;
-                while(j+c<ans.size() and ans[j]==ans[j+c]) ++c;
-                j += (c-1);
-                prev += to_string(c);
-                prev += ans[j];
+                if(ans[j]==ans[j+1])
+                    count++;
+                else
+                {
+                    temp = temp + to_string(count) + ans[j];
+                    count = 1;
+                }
             }
-            ans = prev;
-            prev = "";
+            ans = temp + to_string(count) + ans[ans.size()-1];
         }
         return ans;
     }
