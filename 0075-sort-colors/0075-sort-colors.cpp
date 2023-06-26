@@ -3,15 +3,25 @@ class Solution
 public:
     void sortColors(vector<int>& nums) 
     {
-        for(int i=1;i<nums.size();i++)
+        int low = 0;
+        int high = nums.size()-1;
+        int curr = 0;
+        
+        while(curr<=high)
         {
-            for(int j=i-1,k=i;j>=0;j--,k--)
+            if(nums[curr] == 0)
             {
-                if(nums[j]>=nums[k])
-                    swap(nums[j],nums[k]);
-                else
-                    break;
+                swap(nums[low], nums[curr]);
+                curr++;
+                low++;
             }
+            else if(nums[curr] == 2)
+            {
+                swap(nums[high], nums[curr]);
+                high--;
+            }
+            else
+                curr++;
         }
     }
 };
