@@ -3,17 +3,17 @@ class Solution
 public:
     int maxSubArray(vector<int>& nums) 
     {
-        int sum=0, max=INT_MIN;
+        int ans = INT_MIN;
+        int sum = 0;
         
-        for(int i=0;i<nums.size();i++)
-        {            
+        for(int i=0; i<nums.size(); i++)
+        {
             sum += nums[i];
-            if(sum>max)
-                max = sum;
+            if(sum>ans)
+                ans = sum;
             if(sum<0)
                 sum = 0;
-            //cout<<i<<" "<<sum<<" "<<max<<endl;
         }
-        return max;
+        return ans;
     }
 };
