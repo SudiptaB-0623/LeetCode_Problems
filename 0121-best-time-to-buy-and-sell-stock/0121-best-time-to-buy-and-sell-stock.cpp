@@ -8,10 +8,10 @@ public:
         if(prices.size()<=1)
             return profit;
         
-        for(int i = 0;i<prices.size(); i++)
+        for(int i = 1;i<prices.size(); i++)
         {
-            int temp = prices[i] - mini;
-            profit = max(profit, temp);
+            int cost = prices[i] - mini;
+            profit = max(profit, cost);
             mini = min(mini, prices[i]);
         }
         
