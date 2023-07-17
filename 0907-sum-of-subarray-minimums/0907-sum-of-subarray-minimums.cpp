@@ -1,60 +1,25 @@
 class Solution 
 {
 public:
-    int sumSubarrayMins(vector<int>& arr) 
+    int sumSubarrayMins(vector<int>& nums) 
     {
         int mod = 1e9 + 7;
-        int n = arr.size();
+        long long ans = 0;
         stack<int> st;
-        vector<int> left(n), right(n);
+        int n = nums.size();
         
-        for(int i=0 ; i<n ; i++)
+        for(int right = 0; right<=n ; right++)
         {
-            if(st.empty() == true)
+            while(st.empty()!=true && (right==n || nums[st.top()] >= nums[right]))
             {
-                left[i] = -1;
-                st.push(i);
-            }
-            else
-            {
-                while(st.empty()!=true && arr[st.top()]>arr[i])
-                    st.pop();
-                if(st.empty())
-                    left[i] = -1;
-                else
-                    left[i] = st.top();
-                st.push(i);
-            }
-        }
-        
-        st = {};
-        for(int i=n-1 ; i>=0 ; i--)
-        {
-            if(st.empty() == true)
-            {
-                right[i] = -1;
-                st.push(i);
-            }
-            else
-            {
-                while(st.empty()!=true && arr[st.top()]>=arr[i])
-                    st.pop();
+                int mid = st.top();
+                st.pop();
+                int left = st.empty() ? -1 : st.top();
                 
-                if(st.empty())
-                    right[i] = -1;
-                else
-                    right[i] = st.top();
-                st.push(i);
+                ans = (ans + (long long)(right-mid)*(mid-left)*nums[mid])%mod;
             }
-        }
-        
-        long long int ans = 0;
-        for(int i=0 ; i<n ; i++)
-        {
-            long long int l = (left[i] == -1) ? i+1 : i-left[i];
-            long long int r = (right[i] == -1) ? n-i : right[i]-i;
-            
-            ans = (ans + (l*r)*arr[i])%mod;
+            if(right!=n)
+                st.push(right);
         }
         
         return ans;
