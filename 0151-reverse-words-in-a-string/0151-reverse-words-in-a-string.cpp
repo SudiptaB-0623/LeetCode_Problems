@@ -3,23 +3,28 @@ class Solution
 public:
     string reverseWords(string s) 
     {
-        string ans = {};
-                
-        stringstream ss(s);
-        istream_iterator<string> begin(ss);
-        istream_iterator<string> end;
-        vector<string> vstrings(begin, end);
-              
-        for(int i=vstrings.size()-1;i>=0;i--)
+        string ans = "";
+        string word = "";
+        int n = s.size();
+        
+        for(int i=0 ; i<n ; i++)
         {
-            if(ans=="")
+            if(s[i] == ' ')
+                continue;
+            
+            word = "";
+            while(i<n)
             {
-                ans=vstrings[i];
+                word = word+s[i];
+                i++;
+                if(i!=n && s[i] == ' ')
+                    break;
             }
+            
+            if(ans.size()==0)
+                ans = word;
             else
-            {
-                ans=ans+" "+vstrings[i];
-            }
+                ans = word + ' ' + ans;
         }
         
         return ans;
