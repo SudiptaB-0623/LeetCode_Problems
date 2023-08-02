@@ -1,15 +1,26 @@
-class Solution   
+class Solution 
 {
 public:
-    vector<vector<int>> permute(vector<int>& nums) 
+    void perm(int ind, vector<vector<int>> &ans, vector<int> &nums)
     {
-        vector<vector<int>> ans;
-        sort(nums.begin(),nums.end());
-        
-        do
+        if(ind == nums.size())
         {
             ans.push_back(nums);
-        }while(next_permutation(nums.begin(),nums.end()));
+            return;
+        }
+        
+        for(int i=ind; i<nums.size(); i++)
+        {
+            swap(nums[i], nums[ind]);
+            perm(ind+1, ans, nums);
+            swap(nums[i], nums[ind]);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) 
+    {              
+        vector<vector<int>> ans;
+                
+        perm(0, ans, nums);
         
         return ans;
     }
