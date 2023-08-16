@@ -3,28 +3,30 @@ class Solution
 public:
     bool check(vector<int>& nums) 
     {
-        if(nums.size()<3)
+        int n = nums.size();
+        
+        if(n <= 2)
             return true;
         
-        int i=1;
-        for(; i<nums.size();i++)
+        int i = 1;
+        for( ; i<n ; i++)
         {
             if(nums[i]<nums[i-1])
                 break;
         }
         
-        if(i>=nums.size())
+        if(i>=n)
             return true;
         
-        for(int j=i+1; j<nums.size();j++)
+        for(int j=i+1; j<n ; j++)
         {
             if(nums[j]<nums[j-1])
                 return false;
         }
         
-        if(nums[nums.size()-1]<=nums[0])
+        if(nums[n-1]<=nums[0])
             return true;
-        else
-            return false;
+        
+        return false;
     }
 };
