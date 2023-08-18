@@ -3,8 +3,8 @@ class Solution
 public:
     string reverseWords(string s) 
     {
+        s = s+' ';
         string ans = "";
-        string word = "";
         int n = s.size();
         
         for(int i=0 ; i<n ; i++)
@@ -12,19 +12,18 @@ public:
             if(s[i] == ' ')
                 continue;
             
-            word = "";
-            while(i<n)
+            string temp = "";
+            while(s[i] != ' ')
             {
-                word = word+s[i];
+                temp += s[i];
                 i++;
-                if(i!=n && s[i] == ' ')
-                    break;
             }
+            i--;
             
-            if(ans.size()==0)
-                ans = word;
+            if(ans.size() == 0)
+                ans = temp;
             else
-                ans = word + ' ' + ans;
+                ans = temp + ' ' + ans;
         }
         
         return ans;
