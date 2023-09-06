@@ -3,25 +3,21 @@ class Solution
 public:
     int search(vector<int>& nums, int target) 
     {
-        int low = 0, high = nums.size()-1;
-        int ans = -1;
+        int n = nums.size();
+        int left = 0;
+        int right = n-1;
         
-        while(low<=high)
+        while(left <= right)
         {
-            int mid = low+(high-low)/2;
-            cout<<mid;
-            
-            if(target>nums[mid])
-                low = mid + 1;
-            else if(target<nums[mid])
-                high = mid - 1;
+            int mid = (left+right)/2;
+            if(nums[mid] == target)
+                return mid;
+            else if(nums[mid] > target)
+                right = mid - 1;
             else
-            {
-                ans = mid;
-                break;
-            }
+                left = mid + 1;
         }
         
-        return ans;
+        return -1;
     }
 };
