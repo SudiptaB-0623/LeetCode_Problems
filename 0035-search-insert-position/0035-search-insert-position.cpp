@@ -3,31 +3,24 @@ class Solution
 public:
     int searchInsert(vector<int>& nums, int target) 
     {
-        if(nums.size()==1)
+        int n = nums.size();
+        int l = 0, r = n-1;
+        int ans = -1;
+        
+        while(l<=r)
         {
-            if(nums[0]==target)
-                return 0;
-            else if(nums[0]<target)
-                return 1;
-            else
-                return 0;
-        }
-        
-        int left = 0;
-        int right = nums.size()-1;
-        
-        while(left<=right)
-        {            
-            int mid = left + ((right-left)/2) ;
-            
-            if(nums[mid]==target)
+            int mid = (l+r)/2;
+            if(nums[mid] == target)
                 return mid;
-            else if(nums[mid]<target)
-                left = mid + 1;
+            else if(nums[mid] > target)
+                r = mid - 1;
             else
-                right = mid - 1;
+            {
+                l = mid + 1;
+                ans = max(ans, mid);
+            }
         }
         
-        return left;
+        return ans+1;
     }
 };
