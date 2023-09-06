@@ -13,30 +13,35 @@ class Solution
 public:
     ListNode* oddEvenList(ListNode* head) 
     {
-        if(head==NULL  || head->next==NULL || (head->next)->next==NULL)
+        if(head == NULL || head->next == NULL)
             return head;
         
+        ListNode *odd = new ListNode(-1);
+        ListNode *even = new ListNode(-1);
+        ListNode *olast = odd, *elast = even;
+        int count = 0;
         ListNode *temp = head;
-        int count = 1;
         
-        while(temp->next != NULL)
+        while(temp!=NULL)
         {
             count++;
-            temp = temp->next;
+            if(count%2 == 1)
+            {
+                olast->next = temp;
+                olast = olast->next;
+                temp = temp->next;
+                olast->next = NULL;
+            }
+            else
+            {
+                elast->next = temp;
+                elast = elast->next;
+                temp = temp->next;
+                elast->next = NULL;
+            }          
         }
-        
-        ListNode *curr = head, *tail = temp;
-        
-        for(int i=0;curr!=temp && (i<count/2);i++)
-        {
-            ListNode *flag = curr->next;
-            curr->next = flag->next;
-            flag->next = NULL;
-            tail->next=flag;
-            tail=tail->next;
-            
-            curr=curr->next;
-        }
+        head = odd->next;
+        olast->next = even->next;
         
         return head;
     }
