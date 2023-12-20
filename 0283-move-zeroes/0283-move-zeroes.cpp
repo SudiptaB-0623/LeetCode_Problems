@@ -3,13 +3,23 @@ class Solution
 public:
     void moveZeroes(vector<int>& nums) 
     {
-        for(int i=0, j=0; i<nums.size();i++)
+        int count = 0;
+        int ind = 0;
+        for(int i=0 ; i<nums.size(); i++)
         {
-            if(nums[i]!=0)
+            if(nums[i] == 0)
             {
-                swap(nums[i],nums[j]);
-                j++;
+                count++;
             }
+            else
+            {
+                nums[ind] = nums[i];
+                ind++;
+            }
+        }
+        for(int i=nums.size()-1; count>0; count--, i--)
+        {
+            nums[i] = 0;
         }
     }
 };
