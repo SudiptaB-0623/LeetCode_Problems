@@ -1,28 +1,34 @@
 class Solution 
 {
 public:
-    bool isSafe(vector<vector<char>>& board, int row, int col, char c)
+    bool isSafe(vector<vector<char>> &board, int m, int n, char c)
     {
-        for(int i=0;i<9;i++)
+        for(int i=0; i<=8; i++)
         {
-            if(board[row][i] == c)
+            if(board[i][n] == c)
                 return false;
-            if(board[i][col] == c)
+            
+            if(board[m][i] == c)
                 return false;
-            if(board[(3*(row/3)) + i/3][3*(col/3) + i%3] == c)
+            
+            int row = 3*(m/3) + i/3;
+            int col = 3*(n/3) + i%3;
+            
+            if(board[row][col] == c)
                 return false;
         }
+        
         return true;
     }
-    bool solve(vector<vector<char>>& board)
+    bool solve(vector<vector<char>> &board)
     {
-        for(int i=0; i<9 ; i++)
+        for(int i=0; i<=8; i++)
         {
-            for(int j=0; j<9 ; j++)
+            for(int j=0; j<=8; j++)
             {
-                if(board[i][j] == '.')
+                if(board[i][j]=='.')
                 {
-                    for(char c = '1' ; c<='9' ;c++)
+                    for(char c='1'; c<='9'; c++)
                     {
                         if(isSafe(board, i, j, c))
                         {
